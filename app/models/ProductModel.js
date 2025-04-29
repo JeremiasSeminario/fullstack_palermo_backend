@@ -10,14 +10,6 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  requiresHelmet: {
-    type: Boolean,
-    default: false,
-  },
-  requiresLifeJacket: {
-    type: Boolean,
-    default: false,
-  },
   price: {
     type: Number,
     required: true,
@@ -25,6 +17,20 @@ const ProductSchema = new mongoose.Schema({
   description: {
     type: String,
     required: true,
+  },
+  maxPeople: { 
+    type: Number,
+    default: 1,
+  },
+  requirements: {
+    requiresHelmet: {
+      type: Boolean,
+      default: false,
+    },
+    requiresLifeJacket: {
+      type: Boolean,
+      default: false,
+    }
   },
 });
 

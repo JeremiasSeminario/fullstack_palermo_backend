@@ -1,0 +1,285 @@
+# 1. Crear un cliente válido
+POST http://localhost:5000/customers
+Content-Type: application/json
+
+{
+  "name": "Cliente Uno",
+  "dni": "12345678",
+  "email": "cliente1@test.com"
+}
+
+###
+
+# 2. Crear otro cliente adicional
+POST http://localhost:5000/customers
+Content-Type: application/json
+
+{
+  "name": "Cliente Dos",
+  "dni": "87654321",
+  "email": "cliente2@test.com"
+}
+
+###
+
+# 3. Listar todos los clientes registrados para obtener sus IDs
+GET http://localhost:5000/customers
+
+# Actualizar con los IDs generados en el paso anterior (sin comillas)
+@customer1 = "Agregar ID del CLIENTE 1"
+@customer2 = "Agregar ID del CLIENTE 2"
+
+# Ajustar fecha a hoy o mañana
+@fecha = 2025-04-29
+
+###
+#Buscar un cliente por un campo específico
+GET http://localhost:5000/customers/dni/{{customer2}}
+
+###
+
+# 4. Crear un rental con error (sin casco ni chaleco para Jetsky, debe fallar)
+POST http://localhost:5000/rentals
+Content-Type: application/json
+
+[
+  {
+    "product": "68104304b4c41a1de0350bc3",
+    "customer": "{{customer1}}",
+    "date": "{{fecha}}",
+    "startTime": "10:00",
+    "endTime": "10:30",
+    "peopleCount": 2,
+    "paymentMethod": "card",
+    "isPaid": true,
+    "includesHelmet": false,
+    "includesLifeJacket": false,
+    "currency": "ARS"
+  }
+]
+
+###
+
+# 5. Crear el rental correctamente (Jetsky con casco y chaleco)
+POST http://localhost:5000/rentals
+Content-Type: application/json
+
+[
+  {
+    "product": "68104304b4c41a1de0350bc3",
+    "customer": "{{customer1}}",
+    "date": "{{fecha}}",
+    "startTime": "10:00",
+    "endTime": "10:30",
+    "peopleCount": 2,
+    "paymentMethod": "card",
+    "isPaid": true,
+    "includesHelmet": true,
+    "includesLifeJacket": true,
+    "currency": "ARS"
+  }
+]
+
+###
+
+# 6. Crear rentals con productos distintos para aplicar descuento (Cuatriciclo y Equipo de Buceo)
+POST http://localhost:5000/rentals
+Content-Type: application/json
+
+[
+  {
+    "product": "68104304b4c41a1de0350bc4",
+    "customer": "{{customer2}}",
+    "date": "{{fecha}}",
+    "startTime": "11:00",
+    "endTime": "11:30",
+    "peopleCount": 1,
+    "paymentMethod": "card",
+    "isPaid": true,
+    "currency": "ARS"
+  },
+  {
+    "product": "68104304b4c41a1de0350bc5",
+    "customer": "{{customer2}}",
+    "date": "{{fecha}}",
+    "startTime": "12:00",
+    "endTime": "12:30",
+    "peopleCount": 1,
+    "paymentMethod": "card",
+    "isPaid": true,
+    "currency": "ARS"
+  }
+]
+
+###
+
+# 7. Crear 3 turnos consecutivos válidos
+POST http://localhost:5000/rentals
+Content-Type: application/json
+
+[
+  {
+    "product": "68104304b4c41a1de0350bc7",
+    "customer": "{{customer1}}",
+    "date": "{{fecha}}",
+    "startTime": "13:00",
+    "endTime": "13:30",
+    "peopleCount": 1,
+    "paymentMethod": "cash",
+    "isPaid": false,
+    "currency": "ARS"
+  },
+  {
+    "product": "68104304b4c41a1de0350bc7",
+    "customer": "{{customer1}}",
+    "date": "{{fecha}}",
+    "startTime": "13:30",
+    "endTime": "14:00",
+    "peopleCount": 1,
+    "paymentMethod": "cash",
+    "isPaid": false,
+    "currency": "ARS"
+  },
+  {
+    "product": "68104304b4c41a1de0350bc7",
+    "customer": "{{customer1}}",
+    "date": "{{fecha}}",
+    "startTime": "14:00",
+    "endTime": "14:30",
+    "peopleCount": 1,
+    "paymentMethod": "cash",
+    "isPaid": false,
+    "currency": "ARS"
+  }
+]
+
+###
+
+# 8. Intentar crear 4 turnos consecutivos (debe fallar)
+# "ID_PRODUCTO_SURF_NIÑOS",
+POST http://localhost:5000/rentals
+Content-Type: application/json
+
+[
+  {
+    "product": "68104304b4c41a1de0350bc6",
+    "customer": "{{customer2}}",
+    "date": "{{fecha}}",
+    "startTime": "15:00",
+    "endTime": "15:30",
+    "peopleCount": 1,
+    "paymentMethod": "card",
+    "isPaid": true,
+    "currency": "ARS"
+  },
+  {
+    "product": "68104304b4c41a1de0350bc6",
+    "customer": "{{customer2}}",
+    "date": "{{fecha}}",
+    "startTime": "15:30",
+    "endTime": "16:00",
+    "peopleCount": 1,
+    "paymentMethod": "card",
+    "isPaid": true,
+    "currency": "ARS"
+  },
+  {
+    "product": "68104304b4c41a1de0350bc6",
+    "customer": "{{customer2}}",
+    "date": "{{fecha}}",
+    "startTime": "16:00",
+    "endTime": "16:30",
+    "peopleCount": 1,
+    "paymentMethod": "card",
+    "isPaid": true,
+    "currency": "ARS"
+  },
+  {
+    "product": "68104304b4c41a1de0350bc6",
+    "customer": "{{customer2}}",
+    "date": "{{fecha}}",
+    "startTime": "16:30",
+    "endTime": "17:00",
+    "peopleCount": 1,
+    "paymentMethod": "card",
+    "isPaid": true,
+    "currency": "ARS"
+  }
+]
+
+###
+
+# 9. Listar todos los rentals
+GET http://localhost:5000/rentals
+
+# Actualizar con los IDs generados en el paso anterior
+@rental1 = "Agregar ID del TURNO/ALQUILER 1"
+# Rental de Jetsky
+@rental2 = "Agregar ID del TURNO/ALQUILER 2"
+# Rental de Cuatriciclo
+@rental3 = "Agregar ID del TURNO/ALQUILER 3"
+# Rental de Equipo de Buceo
+@rental4 = "Agregar ID del TURNO/ALQUILER 4"
+# Primer turno de Tabla de Surf
+@rental5 = "Agregar ID del TURNO/ALQUILER 5"
+# Segundo turno de Tabla de Surf
+@rental6 = "Agregar ID del TURNO/ALQUILER 6"
+# Tercer turno de Tabla de Surf
+
+###
+
+# 10. Cancelar un rental manualmente (Rental de Jetsky)
+PATCH http://localhost:5000/rentals/cancel/{{rental1}}
+Content-Type: application/json
+
+{
+  "reason": "Cancelación manual por el cliente"
+}
+
+###
+
+# 11. Cancelar un rental por tormenta (Rental de Cuatriciclo)
+PATCH http://localhost:5000/rentals/cancel-storm/{{rental2}}
+Content-Type: application/json
+
+{
+  "reason": "Tormenta imprevista"
+}
+
+###
+
+# 12. Crear un rental que paga en efectivo y está dentro de las dos horas previas al turno (para probar la cancelación).
+
+# Colocar horas de inicio y fin que estén dentro de dos horas de cuando se esté leyendo esto. Ej. Si son las 6, colocar hora ini 6:30 y hora fin 7:00.
+@horaini = 6:30
+@horafin = 7:00
+
+# Ajustar fecha de hoy
+@fecha1 = 2025-04-29
+
+POST http://localhost:5000/rentals
+Content-Type: application/json
+
+[
+  {
+    "product": "6811528d03fc8cc3e128dee6",
+    "customer": "{{customer1}}",
+    "date": "{{fecha1}}",
+    "startTime": "{{horaini}}",
+    "endTime": "{{horafin}}",
+    "peopleCount": 1,
+    "paymentMethod": "cash",
+    "isPaid": false,
+    "currency": "ARS"
+  }
+]
+
+###
+
+# Cancelar rentals impagos en efectivo.
+GET http://localhost:5000/rentals/cancel-unpaid-cash
+
+###
+
+# 13. Consultar horarios disponibles para un producto (Jetsky)
+GET http://localhost:5000/rentals/available-slots?productId=68104304b4c41a1de0350bc3&date={{fecha}}

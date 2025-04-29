@@ -1,9 +1,14 @@
 const mongoose = require("mongoose");
+const { diffIndexes } = require("./RentalModel");
 
 const CustomerSchema = new mongoose.Schema({
-  name: {
+  dni: {
     type: String,
     unique: true,
+    required: true,
+  },
+  name: {
+    type: String,
     required: true,
   },
   email: { 
@@ -14,7 +19,7 @@ const CustomerSchema = new mongoose.Schema({
   },
   credits: { 
     type: Number, default: 0 
-  },//en caso de que el cliente tenga un saldo a favor por reembolso.
+  },
 });
 
 const Customer = mongoose.model("Customer", CustomerSchema);

@@ -1,14 +1,14 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const path = require("path");
 
 const app = express();
 
 const Product = require('./routes/product');
 const Customer = require('./routes/customer');
+const Rental = require('./routes/rental');
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
   res.send("API funcionando");
@@ -17,5 +17,6 @@ app.get("/", (req, res) => {
 /* endpoints */
 app.use("/products", Product);
 app.use("/customers", Customer);
+app.use("/rentals", Rental);
 
 module.exports = app

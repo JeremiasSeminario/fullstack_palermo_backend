@@ -7,7 +7,7 @@ function listall(req, res) {
     Product.find({})
         .then(products => {
             if(products.length) return res.status(200).send({products})
-            return res.status(204).send({message: 'No Content'});
+            return res.status(200).send({message: 'No Content'});
         }).catch(err => res.status(500).send({err}))
 }
 

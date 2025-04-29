@@ -16,7 +16,7 @@
 
 ### Ejecución:
 ~~~
-1. > node loadProducts.js
+1. > node loadProducts.js (Si se usa las ID de los productos en test.http van a ser incorrectas, teniendo que colocarlas nuevamente)
 ~~~
 2. > npm start
 ~~~

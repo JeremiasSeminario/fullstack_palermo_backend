@@ -16,11 +16,10 @@
 
 ### Ejecución:
 ~~~
-1. > node loadProducts.js (Si se usa las ID de los productos en test.http van a ser incorrectas, teniendo que colocarlas nuevamente)
+1. > npm start
 ~~~
-2. > npm start
 ~~~
-3. > Probar endpoints en test.http (Recomiendo instalar extensión REST Client en VSCode. Probar presionando `Send Request` arriba de cada bloque).
+2. > Probar endpoints en test.http (Recomiendo instalar extensión REST Client en VSCode. Probar presionando `Send Request` arriba de cada bloque).
 ~~~
 
 ### Estructura (MVC)
@@ -48,3 +47,7 @@
     - app.js
 
 El servidor (server.js) inicia con el comando npm start. Entonces se lanza la app (app.js) que carga express y las rutas de los endpoint.
+
+loadProducts.js es el archivo con el que precargué los productos a Atlas, si se corré probablemente las IDs cambien, por lo que se tendrían que cambiar en el archivo test.http que es para probar los endpoints.
+
+

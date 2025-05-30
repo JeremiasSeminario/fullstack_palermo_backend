@@ -1,4 +1,6 @@
+require('dotenv').config();
+
 module.exports = {
-  PORT: 5000,
-  DB: "COMPLETAR"
-}
+  PORT: process.env.PORT || 5000,
+  DB: process.env.DB
+};

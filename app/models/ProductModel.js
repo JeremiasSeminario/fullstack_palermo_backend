@@ -18,7 +18,11 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  maxPeople: { 
+  shortDescription: {
+    type: String,
+    required: true,
+  },
+  maxPeople: {
     type: Number,
     default: 1,
   },

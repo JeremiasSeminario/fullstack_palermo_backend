@@ -4,8 +4,8 @@ const Product = require('./app/models/ProductModel');
 const products = [
   {
     name: "Jetski",
-    price: 2500,
-    description: "Experimenta la adrenalina sobre el agua con nuestros potentes JetSkis",
+    price: 20000,
+    description: "Vive una experiencia extrema sobre el agua con nuestros potentes JetSkis. Ideal para quienes buscan adrenalina y velocidad en el mar.",
     maxPeople: 2,
     requirements: {
       requiresHelmet: true,
@@ -14,8 +14,8 @@ const products = [
   },
   {
     name: "Cuatriciclo",
-    price: 2250,
-    description: "Recorre la playa y alrededores con estos cuatriciclos de gran potencia",
+    price: 16000,
+    description: "Explora la costa y sus alrededores con nuestros cuatriciclos. Potentes, seguros y listos para la aventura en terrenos variados.",
     maxPeople: 2,
     requirements: {
       requiresHelmet: true,
@@ -23,20 +23,20 @@ const products = [
   },
   {
     name: "Equipo de Buceo",
-    price: 1250,
-    description: "Descubre el mundo submarino con nuestro equipamiento profesional completo",
+    price: 14000,
+    description: "Sumérgete en el mundo submarino con equipos de buceo profesionales. Ideal para quienes buscan tranquilidad y exploración marina.",
     maxPeople: 1,
   },
   {
     name: "Tabla de Surf (Adultos)",
-    price: 1000,
-    description: "Tabla de surf de 5 pies, especialmente para niños. Ligera y fácil de manejar.",
+    price: 8000,
+    description: "Tabla de surf profesional para adultos, perfecta para principiantes y surfistas con experiencia. Incluye asesoramiento y tips técnicos.",
     maxPeople: 1,
   },
   {
     name: "Tabla de Surf (Niños)",
-    price: 750,
-    description: "Tabla de surf de 7 pies, ideal para principiantes y surfistas intermedios.",
+    price: 6000,
+    description: "Tabla pequeña y segura diseñada especialmente para niños. Ideal para quienes desean iniciar en el surf, con guía básica incluida.",
     maxPeople: 1,
   }
 ];

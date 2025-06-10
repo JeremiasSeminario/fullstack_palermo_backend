@@ -26,11 +26,11 @@ Content-Type: application/json
 GET http://localhost:5000/customers
 
 # Actualizar con los IDs generados en el paso anterior (sin comillas)
-@customer1 = "Agregar ID del CLIENTE 1"
-@customer2 = "Agregar ID del CLIENTE 2"
+@customer1 = "ID Cliente Uno"
+@customer2 = "ID Cliente Dos"
 
 # Ajustar fecha a hoy o mañana
-@fecha = 2025-04-29
+@fecha = 2025-06-10
 
 ###
 #Buscar un cliente por un campo específico
@@ -66,7 +66,7 @@ Content-Type: application/json
 
 [
   {
-    "product": "68104304b4c41a1de0350bc3",
+    "product": "68474cd2590d3beb54ee5f00",
     "customer": "{{customer1}}",
     "date": "{{fecha}}",
     "startTime": "10:00",
@@ -81,6 +81,7 @@ Content-Type: application/json
 ]
 
 ###
+GET http://localhost:5000/rentals/available-slots?productId=68474cd2590d3beb54ee5f00&date={{fecha}}
 
 # 6. Crear rentals con productos distintos para aplicar descuento (Cuatriciclo y Equipo de Buceo)
 POST http://localhost:5000/rentals

@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { diffIndexes } = require("./RentalModel");
 
 const CustomerSchema = new mongoose.Schema({
   dni: {
@@ -11,14 +10,11 @@ const CustomerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  email: { 
-    type: String 
+  email: {
+    type: String
   },
-  phone: { 
-    type: String 
-  },
-  credits: { 
-    type: Number, default: 0 
+  credits: {
+    type: Number, default: 0
   },
 });
 

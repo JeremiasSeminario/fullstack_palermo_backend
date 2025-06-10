@@ -23,31 +23,27 @@
 ~~~
 
 ### Estructura (MVC)
-- `test.http`
-- `loadProducts.js`
-- `server.js`
-- app
-    - config
-        - config.js
-        - database.js
-    -controllers
-        - CustomerController.js
-        - ProductController.js
-        - RentalController.js
-    - models
-        - CustomerModel.js
-        - ProductModel.js
-        - RentalModel.js
-    - routes
-        - customer.js
-        - product.js
-        - rental.js
-    - services
-        - RentalService.js
-    - app.js
+backend
+├─ app
+│  ├─ app.js
+│  ├─ config
+│  │  ├─ config.js
+│  │  └─ database.js
+│  ├─ controllers
+│  │  ├─ CustomerController.js
+│  │  ├─ ProductController.js
+│  │  └─ RentalController.js
+│  ├─ models
+│  │  ├─ CustomerModel.js
+│  │  ├─ ProductModel.js
+│  │  └─ RentalModel.js
+│  └─ services
+│     └─ RentalService.js
+├─ loadProducts.js
+├─ README.md
+├─ server.js
+└─ test.http
 
 El servidor (server.js) inicia con el comando npm start. Entonces se lanza la app (app.js) que carga express y las rutas de los endpoint.
 
 loadProducts.js es el archivo con el que precargué los productos a Atlas, si se corré probablemente las IDs cambien, por lo que se tendrían que cambiar en el archivo test.http que es para probar los endpoints.
-
-

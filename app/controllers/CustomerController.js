@@ -13,9 +13,13 @@ function create(req, res) {
   let customer = new Customer(req.body);
   customer.save()
     .then(customer => res.status(201).send({ customer }))
-    .catch(err => {
+    .catch(async err => {
       if (err.code === 11000) {
-        // Error de clave duplicada en el campo dni
+        // Buscar el cliente existente y devolverlo con 200 OK
+        const existing = await Customer.findOne({ dni: req.body.dni });
+        if (existing) {
+          return res.status(200).send({ customer: existing });
+        }
         return res.status(400).send({
           error: 'Ya existe un cliente con este DNI',
           keyValue: err.keyValue,

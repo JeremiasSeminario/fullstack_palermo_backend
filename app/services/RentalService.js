@@ -103,6 +103,7 @@ async function validateRental(rental, now) {
       includesHelmet,
       includesLifeJacket,
       status: 'active',
+      currency: rental.currency || 'ARS'
     },
   };
 }
@@ -187,12 +188,26 @@ async function getAvailableSlots(productId, date) {
   const endHour = 20;
 
   for (let hour = startHour; hour < endHour; hour++) {
-    const startTime = `${hour}:00`;
-    const endTime = `${hour}:30`;
-    const slotStart = moment(`${date} ${startTime}`, 'YYYY-MM-DD HH:mm');
-    const slotEnd = moment(`${date} ${endTime}`, 'YYYY-MM-DD HH:mm');
+    let startTime = `${hour.toString().padStart(2, '0')}:00`;
+    let endTime = `${hour.toString().padStart(2, '0')}:30`;
 
-    const overlapping = await Rental.findOne({
+    let overlapping = await Rental.findOne({
+      product: productId,
+      date,
+      startTime,
+    });
+
+    if (!overlapping) {
+      slots.push({ startTime, endTime });
+    }
+
+    startTime = `${hour.toString().padStart(2, '0')}:30`;
+    endTime = `${(hour + 1).toString().padStart(2, '0')}:00`;
+    if (hour + 1 === endHour) {
+      if (startTime === `${endHour}:00`) continue;
+    }
+
+    overlapping = await Rental.findOne({
       product: productId,
       date,
       startTime,
@@ -202,6 +217,12 @@ async function getAvailableSlots(productId, date) {
       slots.push({ startTime, endTime });
     }
   }
+
+  slots.sort((a, b) => {
+    const timeA = parseInt(a.startTime.split(':')[0]) * 60 + parseInt(a.startTime.split(':')[1]);
+    const timeB = parseInt(b.startTime.split(':')[0]) * 60 + parseInt(b.startTime.split(':')[1]);
+    return timeA - timeB;
+  });
 
   return slots;
 }

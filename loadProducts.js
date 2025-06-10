@@ -4,10 +4,8 @@ const Product = require('./app/models/ProductModel');
 const products = [
   {
     name: "Jetski",
-    type: "vehiculo acuatico",
-    price: 8000,
-    description: "Moto de agua de alta velocidad para hasta 2 personas. Incluye casco y chaleco salvavidas obligatorios.",
-    shortDescription: "Potencia y adrenalina en el agua",
+    price: 2500,
+    description: "Experimenta la adrenalina sobre el agua con nuestros potentes JetSkis",
     maxPeople: 2,
     requirements: {
       requiresHelmet: true,
@@ -16,10 +14,8 @@ const products = [
   },
   {
     name: "Cuatriciclo",
-    type: "vehiculo terrestre",
-    price: 6000,
-    description: "Cuatriciclo de aventura para 1 o 2 personas. Incluye casco obligatorio.",
-    shortDescription: "Aventura en la arena",
+    price: 2250,
+    description: "Recorre la playa y alrededores con estos cuatriciclos de gran potencia",
     maxPeople: 2,
     requirements: {
       requiresHelmet: true,
@@ -27,26 +23,20 @@ const products = [
   },
   {
     name: "Equipo de Buceo",
-    type: "equipamiento acuatico",
-    price: 4500,
-    description: "Equipo profesional para bucear en zonas habilitadas.",
-    shortDescription: "Explora el mundo submarino",
-    maxPeople: 1,
-  },
-  {
-    name: "Tabla de Surf (Niños)",
-    type: "equipamiento acuatico",
-    price: 2500,
-    description: "Tabla de surf de 5 pies, especialmente para niños. Ligera y fácil de manejar.",
-    shortDescription: "Diversión segura para los más pequeños",
+    price: 1250,
+    description: "Descubre el mundo submarino con nuestro equipamiento profesional completo",
     maxPeople: 1,
   },
   {
     name: "Tabla de Surf (Adultos)",
-    type: "equipamiento acuatico",
-    price: 3000,
+    price: 1000,
+    description: "Tabla de surf de 5 pies, especialmente para niños. Ligera y fácil de manejar.",
+    maxPeople: 1,
+  },
+  {
+    name: "Tabla de Surf (Niños)",
+    price: 750,
     description: "Tabla de surf de 7 pies, ideal para principiantes y surfistas intermedios.",
-    shortDescription: "Domina las olas",
     maxPeople: 1,
   }
 ];

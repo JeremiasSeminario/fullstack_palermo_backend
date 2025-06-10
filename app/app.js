@@ -1,5 +1,7 @@
 const express = require("express");
 const path = require("path");
+const cors = require('cors');
+const config = require('./config/config.js');
 
 const app = express();
 
@@ -9,6 +11,11 @@ const Rental = require('./routes/rental');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors({
+  origin: config.FRONTEND_URL, // URL de tu frontend
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 app.get("/", (req, res) => {
   res.send("API funcionando");
